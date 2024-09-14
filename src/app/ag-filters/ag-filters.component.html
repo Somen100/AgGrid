@@ -1,0 +1,40 @@
+<div class="container">
+<h2>Filters</h2>
+<hr>
+<div class="btn-group mb-2" role="group" aria-label="Basic mixed styles example">
+  <button type="button" value="showUser" class="btn btn-danger" (click)="selectAPIData($event)">User Data</button>
+  <button type="button" value="showUSADemography" class="btn btn-warning" (click)="selectAPIData($event)">USA Demography</button>
+</div>
+<div class="container">
+
+   <!-- //1 -->
+
+  <ng-container *ngIf="API_DATA_CONFIG.showUser">
+    <div class="row">
+      <div class="col-12">
+       <ag-grid-angular class="ag-theme-quartz" style="width: 100%; height:500px"
+       [rowData]="userList"
+       [columnDefs]="colDefs"
+       [defaultColDef]="defaultColDef"
+        />
+      </div>
+     </div>
+  </ng-container>
+
+
+   <!-- //2 -->
+   <ng-container  *ngIf="API_DATA_CONFIG.showUSADemography">
+    <div class="row">
+      <div class="col-12">
+       <ag-grid-angular class="ag-theme-quartz" style="width: 100%; height:500px"
+       [rowData]="usaDemographicData"
+       [columnDefs]="colDefsUSAPop"
+       [defaultColDef]="defaultColDef"
+       [rowClassRules]="rowClassRules"
+        />
+      </div>
+     </div>
+   </ng-container>
+
+</div>
+</div>
